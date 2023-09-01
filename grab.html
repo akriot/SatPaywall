@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lightning Address Saved | Satdress</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="https://i.imgur.com/4yaPtA2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  </head>
+  <body>
+    <main id="main">
+      <div id="paymentStatus">Processing your payment...</div>
+      <div id="paymentSection">Processing your payment...</div>
+
+      <div class="title">Success!</div>
+      <div class="card">
+        <div class="description">
+          <b>{{ name }}@{{ actual_domain }}</b> is your new Lightning Address!
+        </div>
+        <div class="bold-small">
+          In order to edit the configuration of this address in the future you
+          must save this secret pin:
+        </div>
+        <div class="code">{{ pin }}</div>
+        <button class="copy-button" @click="copyToClipboard">
+          {{ copied ? 'Copied!' : 'Copy Secret PIN' }}
+        </button>
+        <div class="bold-small">
+          To ensure the connection with your Lightning backend is configured
+          properly, we've created a test invoice that can be seen below.
+        </div>
+        <canvas id="qr"></canvas>
+        <div class="code">{{ invoice }}</div>
+      </div>
+      <div class="resources">
+        <a class="resource-button" target="_blank" href="https://t.me/lnurl">
+          Not working? Ask for help!
+        </a>
+        <a
+          class="resource-button"
+          href="https://github.com/andrerfneves/lightning-address#readme"
+          target="_blank"
+        >
+          More information on Lightning Address
+        </a>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.2/vue.global.prod.min.js"></script>
+    <script>
+      const initial = {} // REPLACED WITH SERVER DATA
+
+      const Main = {
+        data() {
+          return {
+            ...initial,
+            copied: false
+          }
+        },
+
+        methods: {
+          copyToClipboard() {
+            navigator.clipboard.writeText(this.pin)
+            this.copied = true
+            setTimeout(() => {
+              this.copied = false
+            }, 5000)
+          }
+        },
+
+        mounted() {
+          new QRious({
+            element: document.getElementById('qr'),
+            value: this.invoice,
+            size: 300
+          })
+        }
+      }
+
+      Vue.createApp(Main).mount('#main')
+    </script>
+  </body>
+</html>
