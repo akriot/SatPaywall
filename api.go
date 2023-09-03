@@ -26,7 +26,7 @@ func getInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 
     jsonData, err := json.Marshal(payload)
 
-	req, err := http.NewRequest("POST", "https://api.lnpay.co/v1/wallet/waki_pB9oopePeIi29JEbL3h9mU7k/invoice?fields=id,payment_request", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", "https://api.lnpay.co/v1/wallet/waki_Pe78HJ1qmFCJgq5TwIOo1y/invoice?fields=id,payment_request", bytes.NewBuffer(jsonData))
     req.Header.Set("Content-Type", "application/json")
     req.Header.Set("X-Api-Key", "pak_Dkjy3ttZKOsquanaLNoj3VDJ5frS9M7")
 
@@ -47,7 +47,7 @@ func getInvoiceHandler(w http.ResponseWriter, r *http.Request) {
     // Make the HTTP POST request to LNPay API
     // req, err := http.NewRequest("POST", "https://api.lnpay.co/v1/wallet/waki_ucUzLVZgePHqOGbEchxAa6E/invoice?fields=id,payment_request", bytes.NewBuffer(jsonData))
     // req.Header.Set("Content-Type", "application/json")
-    // req.Header.Set("X-Api-Key", "pak_g9017h233CD61lmB2PHaEGqBp1uSwh0")
+    // req.Header.Set("X-Api-Key", "pak_Dkjy3ttZKOsquanaLNoj3VDJ5frS9M7")
 
     // client := &http.Client{}
     // resp, err := client.Do(req)
@@ -86,7 +86,7 @@ func checkInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 
     // Make the HTTP GET request to LNPay API to check the invoice status
     req, err := http.NewRequest("GET", "https://api.lnpay.co/v1/lntx/"+invoiceID, nil)
-    req.Header.Set("X-Api-Key", "pak_g9017h233CD61lmB2PHaEGqBp1uSwh0")
+    req.Header.Set("X-Api-Key", "pak_Dkjy3ttZKOsquanaLNoj3VDJ5frS9M7")
 
     client := &http.Client{}
     resp, err := client.Do(req)
