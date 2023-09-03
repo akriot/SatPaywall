@@ -20,7 +20,7 @@ type LNPayResponse struct {
 func getInvoiceHandler(w http.ResponseWriter, r *http.Request) {
     // Define the request payload
     payload := map[string]interface{}{
-        "num_satoshis": 777,
+        "num_satoshis": 1,
         "memo": "Access to satdress form",
     }
 
