@@ -9,7 +9,7 @@ services:
       - DOMAIN=localhost
       - SECRET=askdbasjdhvakjvsdjasd
       - SITE_OWNER_URL=https://x.com/topnotch
-      - SITE_OWNER_NAME=@TooShort
+      - SITE_OWNER_NAME=@TopNotch
       - SITE_NAME=TopNotch
     ports:
       - 17422:17422
