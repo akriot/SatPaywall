@@ -12,11 +12,11 @@ RUN go build
 FROM alpine:3.14
 
 ENV PORT=17422
-ENV DOMAIN=tooshort.live
+ENV DOMAIN=topnotch.net
 ENV SECRET=askdbasjdhvakjvsdjasd
-ENV SITE_OWNER_URL=https://twitter.com/TooShort
-ENV SITE_OWNER_NAME=@TooShort
-ENV SITE_NAME=TooShort
+ENV SITE_OWNER_URL=https://twitter.com/topnotch
+ENV SITE_OWNER_NAME=@TopNotch
+ENV SITE_NAME=TopNotch
 
 COPY --from=builder /opt/buid/satdress /usr/local/bin/
 
